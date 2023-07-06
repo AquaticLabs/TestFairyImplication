@@ -1,0 +1,51 @@
+fairy {
+    mainPackage.set("" + findProperty("plugin.package"))
+
+    bukkitProperties().bukkitApi = "1.13"
+}
+
+dependencies {
+    api("io.fairyproject:bukkit-bundles")
+    api("io.fairyproject:module.animation")
+    api("io.fairyproject:bukkit-command")
+    api("io.fairyproject:bukkit-menu")
+    api("io.fairyproject:module.hologram")
+    api("io.fairyproject:module.config")
+    api("io.fairyproject:module.nametag")
+    api("io.fairyproject:module.sidebar")
+    api("io.fairyproject:bukkit-visibility")
+    api("io.fairyproject:bukkit-visual")
+    api("io.fairyproject:bukkit-timer")
+    api("io.fairyproject:bukkit-nbt")
+    api("io.fairyproject:module.tablist")
+}
+
+dependencies {
+    compileOnlyApi(libs.annotations)
+    compileOnlyApi(libs.bundles.configurate)
+
+    /* ----- Bukkit ----- */
+    compileOnlyApi(libs.paper)
+
+    /* ----- Database ----- */
+    compileOnlyApi(libs.mongodb)
+
+    // If you're a minigame, enable this
+    //implementation(libs.brew)
+
+    /* ----- Minecraft APIs ----- */
+    //compileOnly(libs.placeholderApi)
+    //api(libs.particles)
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(8))
+    }
+}
+
+tasks {
+    shadowJar {
+        archiveFileName.set("my-plugin.jar")
+    }
+}
